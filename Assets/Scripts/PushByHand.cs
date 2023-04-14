@@ -15,21 +15,23 @@ public class PushByHand : XRGrabInteractable
         rb = GetComponent<Rigidbody>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         if(Fist.action.enabled)
         {
             Debug.Log("Action enabled!");
-        }
-        if(collision.gameObject.tag == "Creature")
-        {
-            Rigidbody collidedRigidbody = collision.collider.GetComponent<Rigidbody>();
-            if (collidedRigidbody != null)
+
+            if (other.gameObject.tag == "Creature")
             {
-                Vector3 pushDirection = transform.forward;
-                collidedRigidbody.AddForce(pushDirection * pushForce, ForceMode.VelocityChange);
+                Rigidbody collidedRigidbody = other.GetComponent<Rigidbody>();
+                if (collidedRigidbody != null)
+                {
+                    Vector3 pushDirection = transform.forward;
+                    collidedRigidbody.AddForce(pushDirection * pushForce, ForceMode.VelocityChange);
+                }
             }
         }
+        
        
     }
 }
