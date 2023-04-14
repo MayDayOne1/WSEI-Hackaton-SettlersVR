@@ -28,7 +28,6 @@ public class RandomDestination : MonoBehaviour
         }
 
 
-        //NPoint = new Vector3 (this.transform.position.x,this.transform.position.y,this.transform.position.z);
         nma.SetDestination(result);
     }
 }
