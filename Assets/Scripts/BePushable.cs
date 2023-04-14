@@ -13,12 +13,13 @@ public class BePushable : XRGrabInteractable
         rb = GetComponent<Rigidbody>();
     }
 
-    protected override void OnSelectEntering(XRBaseInteractor interactor)
+    private void OnCollisionEnter(Collision collision)
     {
-        base.OnSelectEntering(interactor);
-
-        Vector3 initPos = interactor.transform.position;
-        Vector3 handDelta = interactor.transform.position - initPos;
-        rb.AddForce(handDelta * pushForce, ForceMode.VelocityChange);
+        Rigidbody collidedRigidbody = collision.collider.GetComponent<Rigidbody>();
+        if(collidedRigidbody != null )
+        {
+            Vector3 pushDirection = transform.forward;
+            collidedRigidbody.AddForce(pushDirection * pushForce, ForceMode.VelocityChange);
+        }
     }
 }
