@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.Rendering;
 using UnityEngine;
 
@@ -10,8 +11,15 @@ public class TreeShakeFruits : MonoBehaviour
     public float speedTreshold;
     public Rigidbody rb;
     public int fruitCount;
+    public List<GameObject> gfxFruits;
 
     public bool temp;
+    private int startingFruitNum;
+
+    private void Start()
+    {
+        startingFruitNum = fruitCount;
+    }
 
     private void OnTriggerStay(Collider other)
     {
@@ -31,6 +39,16 @@ public class TreeShakeFruits : MonoBehaviour
 
         Instantiate(fruitPrefab, fruitSpawnerPoints[0].transform.position, fruitSpawnerPoints[0].transform.rotation);
         fruitCount--;
+        DropGFXApples();
+    }
+
+    private void DropGFXApples()
+    {
+        if(fruitCount % (startingFruitNum / 5) == 0)
+        {
+            Destroy(gfxFruits.First());
+            gfxFruits.RemoveAt(0);
+        }
     }
 
 }
