@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class RandomDestination : MonoBehaviour
 {
-    private Vector3 NPoint;
     private NavMeshAgent nma = null;
     public NavMeshSurface nms;
     float radius = 30f;
