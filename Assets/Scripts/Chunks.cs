@@ -1,13 +1,13 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
- 
-[Serializable]
-public struct NavMeshChunk
+
+public class Chunks : MonoBehaviour
 {
     public Vector3 EulerRotation;
+ 
+    //---- DRAG HERE YOUR BAKED NAVMESH CHUNK
     public NavMeshData Data;          
     public bool Enabled;
 }
@@ -15,8 +15,9 @@ public struct NavMeshChunk
  
 public class NavMeshSphere : MonoBehaviour
 {
+    //----- HERE ARE YOUR BAKED NAVMESH CHUNKS
     [SerializeField]
-    private List<NavMeshChunk> _navMeshChunks;
+    private List<Chunks> _navMeshChunks;
  
     [SerializeField]
     private List<NavMeshDataInstance> _instances = new List<NavMeshDataInstance>();
