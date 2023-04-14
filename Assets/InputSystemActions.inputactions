@@ -1,0 +1,45 @@
+{
+    "name": "InputSystemActions",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "76080ac0-7638-4847-89f7-8a5443d001e7",
+            "actions": [
+                {
+                    "name": "ClenchFist",
+                    "type": "Button",
+                    "id": "05462adf-532f-497d-8b3a-9e45dcc0016a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6f449d57-9a0a-461e-aa45-b232274d6791",
+                    "path": "<ViveController>/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ClenchFist",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7e7882e8-0095-4a11-8e9f-cae09be0377d",
+                    "path": "<ViveController>/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ClenchFist",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

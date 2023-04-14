@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 660303980404215211}
   - component: {fileID: 660303980404214870}
   - component: {fileID: 660303980404214871}
+  - component: {fileID: 1653779166}
   m_Layer: 0
   m_Name: ChopekRend
-  m_TagString: Untagged
+  m_TagString: Creature
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,6 +135,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &1653779166
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660303980404215210}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.81
+  m_Height: 4.453388
+  m_Direction: 1
+  m_Center: {x: 0, y: -1.3366923, z: 0.015549004}
 --- !u!1001 &660303979873869975
 PrefabInstance:
   m_ObjectHideFlags: 0
