@@ -872,6 +872,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2565920513313856597, guid: ff408a61a4e3b8a4985bafd6c8b8f9ea,
+        type: 3}
+      propertyPath: speedTreshold
+      value: 0.001
+      objectReference: {fileID: 0}
     - target: {fileID: 715294915428584469, guid: ff408a61a4e3b8a4985bafd6c8b8f9ea,
         type: 3}
       propertyPath: m_Name
@@ -900,17 +905,17 @@ PrefabInstance:
     - target: {fileID: 7102695338051912214, guid: ff408a61a4e3b8a4985bafd6c8b8f9ea,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.4064434
+      value: 3.478
       objectReference: {fileID: 0}
     - target: {fileID: 7102695338051912214, guid: ff408a61a4e3b8a4985bafd6c8b8f9ea,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 16.154856
+      value: 15.311
       objectReference: {fileID: 0}
     - target: {fileID: 7102695338051912214, guid: ff408a61a4e3b8a4985bafd6c8b8f9ea,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.1551228
+      value: 4.866
       objectReference: {fileID: 0}
     - target: {fileID: 7102695338051912214, guid: ff408a61a4e3b8a4985bafd6c8b8f9ea,
         type: 3}
@@ -951,6 +956,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7142608803136909587, guid: ff408a61a4e3b8a4985bafd6c8b8f9ea,
+        type: 3}
+      propertyPath: m_Drag
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7142608803136909587, guid: ff408a61a4e3b8a4985bafd6c8b8f9ea,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7142608803136909587, guid: ff408a61a4e3b8a4985bafd6c8b8f9ea,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff408a61a4e3b8a4985bafd6c8b8f9ea, type: 3}
@@ -1211,7 +1231,7 @@ GameObject:
   - component: {fileID: 1196044528}
   m_Layer: 0
   m_Name: Planet
-  m_TagString: Untagged
+  m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
