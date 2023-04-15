@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.InputSystem;
+using UnityEngine.AI;
 
 public class PushByHand : XRGrabInteractable
 {
@@ -18,6 +19,11 @@ public class PushByHand : XRGrabInteractable
     {
         if (collision.gameObject.tag == "Creature" || collision.gameObject.tag == "Enemy")
         {
+            NavMeshAgent agent = collision.gameObject.GetComponent<NavMeshAgent>();
+            if (agent != null)
+            {
+                agent.enabled = false;
+            }
             Rigidbody collidedRigidbody = collision.collider.GetComponent<Rigidbody>();
             if (collidedRigidbody != null)
             {
