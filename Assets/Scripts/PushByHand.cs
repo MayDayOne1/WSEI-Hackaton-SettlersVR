@@ -20,8 +20,10 @@ public class PushByHand : XRGrabInteractable
         if (collision.gameObject.tag == "Creature" || collision.gameObject.tag == "Enemy")
         {
             NavMeshAgent agent = collision.gameObject.GetComponent<NavMeshAgent>();
+            Debug.Log("Agent: " + agent);
             if (agent != null)
             {
+                Debug.Log("Agent disabled!");
                 agent.enabled = false;
             }
             Rigidbody collidedRigidbody = collision.collider.GetComponent<Rigidbody>();
