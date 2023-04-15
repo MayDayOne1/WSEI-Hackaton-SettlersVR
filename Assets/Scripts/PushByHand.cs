@@ -17,7 +17,8 @@ public class PushByHand : XRGrabInteractable
 
     private void OnColliderEnter(Collision collision)
     {
-        if(Fist.action.enabled)
+        
+        if(Fist.action.WasPressedThisFrame())
         {
             Debug.Log("Action enabled!");
 
