@@ -20,7 +20,8 @@ public class VillageManager : MonoBehaviour
 
             Debug.Log("Villager has died");
 
-            Destroy(other.gameObject);
+            other.GetComponent<Tatakae>().OnMonsterDie();
+            //Destroy(other.gameObject);
             _textMeshProUGUI.text = $"{_villagers} villagers";
         }
 
