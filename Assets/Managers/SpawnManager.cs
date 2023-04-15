@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 //using static UnityEditor.Progress;
 
 public class SpawnManager : MonoBehaviour
@@ -16,14 +17,16 @@ public class SpawnManager : MonoBehaviour
 
     [SerializeField] int _timeToSpawn = 2;
     [SerializeField] int _nextTimeToSpawn;
-    [SerializeField] float _radius;
+
+    bool _canSpawn = true;
 
     private void Start()
     {
         DayAndNightCycleManager.instance.onHourPassed += SpawnEnemy;
-        
+        PlanetRotationEventHandler.instance.planetRotates += DisableManager;
+        PlanetRotationEventHandler.instance.planetStopped += EnableManager;
 
-        //_radius = _villageSize
+
     }
 
     void Update()
@@ -56,15 +59,50 @@ public class SpawnManager : MonoBehaviour
 
     //    //o.transform.rotation = Quaternion.FromToRotation(-transform.up, new Vector3(0, 0, 0)) * transform.rotation;
 
-
-
+    //private void OnEnable()
+    //{
+    //    DayAndNightCycleManager.instance.onHourPassed += SpawnEnemy;
+    //    PlanetRotationEventHandler.instance.planetRotates += DisableManager;
     //}
+
+    //private void OnDisable()
+    //{
+    //    DayAndNightCycleManager.instance.onHourPassed -= SpawnEnemy;
+    //    PlanetRotationEventHandler.instance.planetStopped += EnableManager;
+    //}
+
+    private void EnableManager()
+    {
+        _canSpawn = true;
+
+        NavMeshAgent[] gameObjects = _spawnTransform.GetComponentsInChildren<NavMeshAgent>();
+        foreach (var monster in gameObjects)
+        {
+            monster.enabled = true;
+        }
+    }
+
+    private void DisableManager()
+    {
+        _canSpawn = false;
+
+        NavMeshAgent[] gameObjects = _spawnTransform.GetComponentsInChildren<NavMeshAgent>();
+        foreach (var monster in gameObjects)
+        {
+            monster.enabled = false;
+        }
+    }
 
     private void SpawnEnemy()
     {
+        if (!_canSpawn)
+        {
+            return;
+        }
+
         if (_nextTimeToSpawn == _timeToSpawn)
         {
-            _nextTimeToSpawn=0;
+            _nextTimeToSpawn = 0;
             _timeToSpawn = Random.Range(2, 4);
 
             float r = .3f;
@@ -76,6 +114,7 @@ public class SpawnManager : MonoBehaviour
             _origin = _planet.position + Random.onUnitSphere * r;
 
 
+            _findPosX = new Vector3();
 
             Vector3 _nextEnemySpawnPoint = new Vector3(_origin.x, _enemySpawnPoint.position.y, _origin.z);
 
@@ -84,11 +123,16 @@ public class SpawnManager : MonoBehaviour
             Physics.Raycast(_terrainPoint, out _terrainHit);
 
 
-            Instantiate(_prefab, new Vector3(_terrainHit.point.x, _terrainHit.point.y, _terrainHit.point.z), Quaternion.identity);
+            GameObject spawnedobj = Instantiate(_prefab, new Vector3(_terrainHit.point.x, _terrainHit.point.y, _terrainHit.point.z), Quaternion.identity);
+            spawnedobj.transform.SetParent(_spawnTransform);
+
             return;
         }
 
         _nextTimeToSpawn++;
+
+
+
 
 
         //float r = 1f;
@@ -151,5 +195,7 @@ public class SpawnManager : MonoBehaviour
 
 
         //Instantiate(_prefab, new Vector3(_terrainHit.point.x, _terrainHit.point.y, _terrainHit.point.z), Quaternion.identity);
+
+
     }
 }
