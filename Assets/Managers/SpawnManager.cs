@@ -55,18 +55,6 @@ public class SpawnManager : MonoBehaviour
         this.enabled = false;
     }
 
-    void Update()
-    {
-        //if (Input.GetKeyDown("f"))
-        //{
-        //    //SpawnObject();
-        //    SpawnEnemy();
-        //}
-
-    }
-
-
-
     //private void SpawnObject()
     //{
     //    float r = 2f;
@@ -100,7 +88,7 @@ public class SpawnManager : MonoBehaviour
 
     private void EnableManager()
     {
-        _canSpawn = true;
+        //_canSpawn = true;
 
         NavMeshAgent[] gameObjects = _spawnTransform.GetComponentsInChildren<NavMeshAgent>();
         foreach (var monster in gameObjects)
@@ -111,7 +99,7 @@ public class SpawnManager : MonoBehaviour
 
     private void DisableManager()
     {
-        _canSpawn = false;
+        //_canSpawn = false;
 
         NavMeshAgent[] gameObjects = _spawnTransform.GetComponentsInChildren<NavMeshAgent>();
         foreach (var monster in gameObjects)
@@ -141,7 +129,7 @@ public class SpawnManager : MonoBehaviour
             Physics.Raycast(_terrainPoint, out _terrainHit, _layerMask);
 
 
-            //_terrainHit.normal
+
 
             GameObject spawnedobj = Instantiate(_villager, new Vector3(_terrainHit.point.x, _terrainHit.point.y + 0.06f, _terrainHit.point.z), Quaternion.identity);
             spawnedobj.transform.SetParent(_spawnVillagers);
