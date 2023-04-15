@@ -17,6 +17,7 @@ public class SpawnManager : MonoBehaviour
 
     [SerializeField] int _timeToSpawn = 2;
     [SerializeField] int _nextTimeToSpawn;
+    [SerializeField] LayerMask _layerMask;
 
     bool _canSpawn = true;
 
@@ -118,9 +119,10 @@ public class SpawnManager : MonoBehaviour
 
             Vector3 _nextEnemySpawnPoint = new Vector3(_origin.x, _enemySpawnPoint.position.y, _origin.z);
 
+            
             Ray _terrainPoint = new Ray(_nextEnemySpawnPoint, new Vector3(0, -1, 0));
             RaycastHit _terrainHit;
-            Physics.Raycast(_terrainPoint, out _terrainHit);
+            Physics.Raycast(_terrainPoint, out _terrainHit, _layerMask);
 
 
             GameObject spawnedobj = Instantiate(_prefab, new Vector3(_terrainHit.point.x, _terrainHit.point.y, _terrainHit.point.z), Quaternion.identity);
