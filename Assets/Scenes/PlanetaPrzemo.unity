@@ -130,6 +130,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 809456474, guid: 64950f8cab4aa004492a49d4dafcc8fb, type: 3}
+      propertyPath: Fist
+      value: 
+      objectReference: {fileID: -7424045496548234025, guid: fb74ac31b549ce44ea050a7e9a4202c4,
+        type: 3}
     - target: {fileID: 1922201061, guid: 64950f8cab4aa004492a49d4dafcc8fb, type: 3}
       propertyPath: Fist
       value: 
