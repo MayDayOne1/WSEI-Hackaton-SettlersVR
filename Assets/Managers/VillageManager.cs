@@ -9,6 +9,7 @@ public class VillageManager : MonoBehaviour
 {
     public event Action onAllVillagersLost;
 
+    [SerializeField] ParticleSystem particles;
     [SerializeField] int _villagers = 10;
     [SerializeField] TextMeshProUGUI _textMeshProUGUI;
 
@@ -30,6 +31,8 @@ public class VillageManager : MonoBehaviour
             _villagers++;
 
             Debug.Log("Villager has joined");
+            particles.Stop();
+            particles.Play();
 
             Destroy(other.gameObject);
             _textMeshProUGUI.text = $"{_villagers} villagers";
