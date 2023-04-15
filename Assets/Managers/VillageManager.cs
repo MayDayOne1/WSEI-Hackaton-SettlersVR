@@ -34,5 +34,14 @@ public class VillageManager : MonoBehaviour
             _textMeshProUGUI.text = $"{_villagers} villagers";
         }
 
+        if (other.gameObject.tag == "Creature")
+        {
+            _villagers++;
+
+            Debug.Log("Villager has joined");
+
+            Destroy(other.gameObject);
+            _textMeshProUGUI.text = $"{_villagers} villagers";
+        }
     }
 }

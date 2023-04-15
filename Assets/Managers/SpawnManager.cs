@@ -8,22 +8,34 @@ public class SpawnManager : MonoBehaviour
 {
 
     [SerializeField] Transform _spawnTransform;
-    [SerializeField] GameObject _prefab;
+    [SerializeField] Transform _spawnVillagers;
+
+    [SerializeField] GameObject _enemy;
+    [SerializeField] GameObject _villager;
+
     [SerializeField] Transform _planet;
     [SerializeField] Transform _enemySpawnPoint;
 
     [SerializeField] float _maxSpawnDistance = .3f;
     [SerializeField] float _villageSize = .3f;
 
-    [SerializeField] int _timeToSpawn = 2;
-    [SerializeField] int _nextTimeToSpawn;
+    [SerializeField] int _timeToSpawnEnemy = 2;
+    [SerializeField] int _timeToSpawnVillager = 3;
+
+    [SerializeField] int _nextTimeToSpawn = 2;
+    [SerializeField] int _nextTimeToSpawnVillager = 3;
+
     [SerializeField] LayerMask _layerMask;
+
+    //[SerializeField] bool _isSpawnedVillager;
 
     bool _canSpawn = true;
 
     private void Start()
     {
         DayAndNightCycleManager.instance.onHourPassed += SpawnEnemy;
+        DayAndNightCycleManager.instance.onHourPassed += SpawnVillager;
+
         PlanetRotationEventHandler.instance.planetRotates += DisableManager;
         PlanetRotationEventHandler.instance.planetStopped += EnableManager;
 
@@ -94,6 +106,38 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    private void SpawnVillager()
+    {
+        if (_nextTimeToSpawnVillager == _timeToSpawnVillager)
+        {
+            _nextTimeToSpawnVillager = 0;
+            _timeToSpawnVillager = Random.Range(3, 8);
+
+            float r = 0.5f;
+            Vector3 _origin;
+            _origin = _planet.position + Random.onUnitSphere * r;
+
+            Vector3 _nextEnemySpawnPoint = new Vector3(_origin.x, _enemySpawnPoint.position.y, _origin.z);
+
+            Vector3 raycastDir = _planet.transform.position - _nextEnemySpawnPoint;
+
+
+            Ray _terrainPoint = new Ray(_nextEnemySpawnPoint, raycastDir);
+            RaycastHit _terrainHit;
+            Physics.Raycast(_terrainPoint, out _terrainHit, _layerMask);
+
+
+            //_terrainHit.normal
+
+            GameObject spawnedobj = Instantiate(_villager, new Vector3(_terrainHit.point.x, _terrainHit.point.y + 0.06f, _terrainHit.point.z), Quaternion.identity);
+            spawnedobj.transform.SetParent(_spawnVillagers);
+
+            //_isSpawnedVillager = true;
+            return;
+        }
+        _nextTimeToSpawnVillager++;
+    }
+
     private void SpawnEnemy()
     {
         if (!_canSpawn)
@@ -101,19 +145,13 @@ public class SpawnManager : MonoBehaviour
             return;
         }
 
-        if (_nextTimeToSpawn == _timeToSpawn)
+        if (_nextTimeToSpawn == _timeToSpawnEnemy)
         {
             _nextTimeToSpawn = 0;
-            _timeToSpawn = Random.Range(2, 4);
-
-
+            _timeToSpawnEnemy = Random.Range(2, 4);
 
             float r = 1f;
-
             Vector3 _origin;
-            Vector3 _findPosX;
-
-
             _origin = _planet.position + Random.onUnitSphere * r;
 
 
@@ -129,14 +167,13 @@ public class SpawnManager : MonoBehaviour
             Physics.Raycast(_terrainPoint, out _terrainHit, _layerMask);
 
 
-            GameObject spawnedobj = Instantiate(_prefab, new Vector3(_terrainHit.point.x, _terrainHit.point.y, _terrainHit.point.z), Quaternion.identity);
+            GameObject spawnedobj = Instantiate(_enemy, new Vector3(_terrainHit.point.x, _terrainHit.point.y, _terrainHit.point.z), Quaternion.identity);
             spawnedobj.transform.SetParent(_spawnTransform);
 
             return;
         }
 
         _nextTimeToSpawn++;
-
 
 
 
