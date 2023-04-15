@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3776853963884092971}
-  - component: {fileID: 3776853963884092968}
+  - component: {fileID: 5514717767858735033}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: Untagged
@@ -64,7 +64,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3776853963884092968
+--- !u!114 &5514717767858735033
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -77,9 +77,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnTransform: {fileID: 3776853962879920461}
-  _prefab: {fileID: 7588030284943313293, guid: e16af6e86ddbc974e94170dc22ce242f, type: 3}
+  _prefab: {fileID: 695812881795077035, guid: 7cc0470eceb84734fba3d7c656a1127a, type: 3}
   _planet: {fileID: 0}
   _enemySpawnPoint: {fileID: 0}
-  _nightCycleManager: {fileID: 0}
   _maxSpawnDistance: 0.3
   _villageSize: 0.3
+  _timeToSpawn: 2
+  _nextTimeToSpawn: 0

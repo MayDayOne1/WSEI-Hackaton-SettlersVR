@@ -16,10 +16,14 @@ public class SpawnManager : MonoBehaviour
 
     [SerializeField] int _timeToSpawn = 2;
     [SerializeField] int _nextTimeToSpawn;
+    [SerializeField] float _radius;
 
     private void Start()
     {
         DayAndNightCycleManager.instance.onHourPassed += SpawnEnemy;
+        
+
+        //_radius = _villageSize
     }
 
     void Update()
@@ -63,7 +67,7 @@ public class SpawnManager : MonoBehaviour
             _nextTimeToSpawn=0;
             _timeToSpawn = Random.Range(2, 4);
 
-            float r = 5f;
+            float r = .3f;
 
             Vector3 _origin;
             Vector3 _findPosX;
