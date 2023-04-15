@@ -57,6 +57,7 @@ public class Tatakae : MonoBehaviour
     IEnumerator Die()
     {
         _animator.SetTrigger("Death");
+        _navMeshAgent.isStopped = true;
         graph.Play();
         yield return new WaitForSeconds(1);
         Destroy(gameObject);
