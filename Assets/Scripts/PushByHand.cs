@@ -8,7 +8,6 @@ public class PushByHand : XRGrabInteractable
 {
     private Rigidbody rb;
     public float pushForce = 5f;
-    public InputActionReference Fist;
 
     private void Start()
     {
@@ -17,21 +16,18 @@ public class PushByHand : XRGrabInteractable
 
     private void OnColliderEnter(Collision collision)
     {
-        
-        if(Fist.action.WasPressedThisFrame())
+        if (collision.gameObject.tag == "Creature")
         {
-            Debug.Log("Action enabled!");
-
-            if (collision.gameObject.tag == "Creature")
+            Rigidbody collidedRigidbody = collision.collider.GetComponent<Rigidbody>();
+            if (collidedRigidbody != null)
             {
-                Rigidbody collidedRigidbody = collision.collider.GetComponent<Rigidbody>();
-                if (collidedRigidbody != null)
-                {
-                    Vector3 pushDirection = transform.forward;
-                    collidedRigidbody.AddForce(pushDirection * pushForce, ForceMode.VelocityChange);
-                }
+                Vector3 pushDirection = transform.forward;
+                collidedRigidbody.AddForce(pushDirection * pushForce, ForceMode.VelocityChange);
+
+                Destroy(collision.gameObject, 3f);
             }
         }
+        
         
        
     }
