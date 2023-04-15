@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,21 +7,10 @@ using UnityEngine.UI;
 
 public class VillageManager : MonoBehaviour
 {
+    public event Action onAllVillagersLost;
+
     [SerializeField] int _villagers = 10;
     [SerializeField] TextMeshProUGUI _textMeshProUGUI;
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.tag == "Enemy")
-    //    {
-    //        _villagers--;
-
-    //        Debug.Log("Villager has died");
-
-    //        Destroy(collision.gameObject);
-    //        _textMeshProUGUI.text = $"{_villagers} villagers";
-    //    }
-    //}
 
     void OnTriggerEnter(Collider other)
     {
@@ -42,6 +32,13 @@ public class VillageManager : MonoBehaviour
 
             Destroy(other.gameObject);
             _textMeshProUGUI.text = $"{_villagers} villagers";
+        }
+
+        if (_villagers < 1)
+        {
+            onAllVillagersLost?.Invoke();
+            _textMeshProUGUI.color = Color.red;
+            _textMeshProUGUI.text = "Game over!";
         }
     }
 }

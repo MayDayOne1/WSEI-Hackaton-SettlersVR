@@ -7,6 +7,8 @@ using UnityEngine.AI;
 public class SpawnManager : MonoBehaviour
 {
 
+    [SerializeField] VillageManager villageManager;
+
     [SerializeField] Transform _spawnTransform;
     [SerializeField] Transform _spawnVillagers;
 
@@ -27,8 +29,6 @@ public class SpawnManager : MonoBehaviour
 
     [SerializeField] LayerMask _layerMask;
 
-    //[SerializeField] bool _isSpawnedVillager;
-
     bool _canSpawn = true;
 
     private void Start()
@@ -39,7 +39,20 @@ public class SpawnManager : MonoBehaviour
         PlanetRotationEventHandler.instance.planetRotates += DisableManager;
         PlanetRotationEventHandler.instance.planetStopped += EnableManager;
 
+        villageManager.onAllVillagersLost += VillageManager_onAllVillagersLost;
+    }
 
+    private void VillageManager_onAllVillagersLost()
+    {
+        villageManager.onAllVillagersLost -= VillageManager_onAllVillagersLost;
+        DayAndNightCycleManager.instance.onHourPassed -= SpawnEnemy;
+        DayAndNightCycleManager.instance.onHourPassed -= SpawnVillager;
+
+        PlanetRotationEventHandler.instance.planetRotates -= DisableManager;
+        PlanetRotationEventHandler.instance.planetStopped -= EnableManager;
+
+
+        this.enabled = false;
     }
 
     void Update()
@@ -51,6 +64,7 @@ public class SpawnManager : MonoBehaviour
         //}
 
     }
+
 
 
     //private void SpawnObject()
@@ -155,7 +169,6 @@ public class SpawnManager : MonoBehaviour
             _origin = _planet.position + Random.onUnitSphere * r;
 
 
-            //_findPosX = new Vector3();
 
             Vector3 _nextEnemySpawnPoint = new Vector3(_origin.x, _enemySpawnPoint.position.y, _origin.z);
 

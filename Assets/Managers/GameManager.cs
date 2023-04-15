@@ -5,14 +5,17 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     GameState gameState;
+    [SerializeField] VillageManager villageManager;
 
     private void Awake()
     {
         gameState = GameState.Playing;
+        villageManager.onAllVillagersLost += GameLost;
     }
 
-    public void SetState(GameState gameState)
+    public void GameLost()
     {
+        gameState = GameState.Lost;
 
     }
 
