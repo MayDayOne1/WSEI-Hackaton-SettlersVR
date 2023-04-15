@@ -4,15 +4,15 @@ using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.VFX;
+using static UnityEngine.ParticleSystem;
 
 public class Tatakae : MonoBehaviour
 {
-    [SerializeField] VisualEffect graph;
+    [SerializeField] ParticleSystem particles;
 
     private NavMeshAgent _navMeshAgent = null;
     private Animator _animator;
     private GameObject _villagePos;
-
 
     void Awake()
     {
@@ -37,7 +37,6 @@ public class Tatakae : MonoBehaviour
         _navMeshAgent.SetDestination(_villagePos.transform.position);
     }
 
-
     public void DisableAgent()
     {
         _navMeshAgent.enabled = false;
@@ -51,14 +50,17 @@ public class Tatakae : MonoBehaviour
     public void OnMonsterDie()
     {
         StartCoroutine(Die());
-
     }
 
     IEnumerator Die()
     {
         _animator.SetTrigger("Death");
+
         _navMeshAgent.isStopped = true;
-        graph.Play();
+
+
+        particles.Stop();
+        particles.Play();
         yield return new WaitForSeconds(1);
         Destroy(gameObject);
     }
