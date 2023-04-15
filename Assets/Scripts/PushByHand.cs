@@ -18,7 +18,7 @@ public class PushByHand : XRGrabInteractable
     private void OnColliderEnter(Collision collision)
     {
         Debug.Log("Collision!");
-        if (collision.gameObject.tag == "Creature" || collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Creature")
         {
             NavMeshAgent agent = collision.gameObject.GetComponent<NavMeshAgent>();
             Debug.Log("Agent: " + agent);
@@ -35,6 +35,11 @@ public class PushByHand : XRGrabInteractable
 
                 Destroy(collision.gameObject, 3f);
             }
+        }
+
+        if(collision.gameObject.tag == "Enemy")
+        {
+            Destroy(collision.gameObject, .5f);
         }
         
         
