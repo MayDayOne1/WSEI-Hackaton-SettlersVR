@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 2604572986663396686}
   - component: {fileID: 858825723980519945}
   - component: {fileID: -2565920513313856597}
+  - component: {fileID: -4314750508080197946}
   m_Layer: 7
   m_Name: Tree
   m_TagString: Untagged
@@ -315,6 +316,38 @@ MonoBehaviour:
   - {fileID: 6688773762318062735}
   - {fileID: 7570660985642413036}
   temp: 0
+--- !u!114 &-4314750508080197946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715294915428584469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 397648738, guid: 9e5402f1f36575640bf97c05c7333478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_type: 4
+  m_motionType: 0
+  m_min: 0
+  m_max: 0
+  m_min2: 0
+  m_max2: 0
+  m_affordances:
+    m_graspable: 1
+    m_indexPushable: 0
+    m_palmPushable: 0
+    m_bounces: 0
+    m_bounces_two_state: 0
+    m_snaps: 0
+  m_screwRate: 0
+  m_dualHandsOnly: 0
+  m_discreteStates: []
+  m_discreteStates2: []
+  m_networkID: 0
+  m_anchor: {fileID: 0}
+  m_pushDirection: {fileID: 0}
 --- !u!1 &1437292017601432065
 GameObject:
   m_ObjectHideFlags: 0
