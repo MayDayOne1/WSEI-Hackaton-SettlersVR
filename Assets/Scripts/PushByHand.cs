@@ -39,7 +39,7 @@ public class PushByHand : XRGrabInteractable
 
         if (other.gameObject.tag == "Enemy")
         {
-            Destroy(other.gameObject, .5f);
+            other.gameObject.GetComponent<Tatakae>().OnMonsterDie();
         }
     }
 
