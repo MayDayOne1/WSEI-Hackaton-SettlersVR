@@ -106,7 +106,9 @@ public class SpawnManager : MonoBehaviour
             _nextTimeToSpawn = 0;
             _timeToSpawn = Random.Range(2, 4);
 
-            float r = .3f;
+
+
+            float r = 1f;
 
             Vector3 _origin;
             Vector3 _findPosX;
@@ -115,12 +117,14 @@ public class SpawnManager : MonoBehaviour
             _origin = _planet.position + Random.onUnitSphere * r;
 
 
-            _findPosX = new Vector3();
+            //_findPosX = new Vector3();
 
             Vector3 _nextEnemySpawnPoint = new Vector3(_origin.x, _enemySpawnPoint.position.y, _origin.z);
 
-            
-            Ray _terrainPoint = new Ray(_nextEnemySpawnPoint, new Vector3(0, -1, 0));
+            Vector3 raycastDir = _planet.transform.position - _nextEnemySpawnPoint;
+
+
+            Ray _terrainPoint = new Ray(_nextEnemySpawnPoint, raycastDir);
             RaycastHit _terrainHit;
             Physics.Raycast(_terrainPoint, out _terrainHit, _layerMask);
 
