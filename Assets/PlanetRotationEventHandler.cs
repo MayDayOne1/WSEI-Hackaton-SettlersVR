@@ -51,11 +51,11 @@ public class PlanetRotationEventHandler : MonoBehaviour
 
     public void Stop()
     {
-        Debug.Log("zzzzzz");
+        // Debug.Log("zzzzzz");
     }
 
     public void NotStop()
     {
-        Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        // Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
     }
 }

@@ -130,6 +130,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 103776932, guid: 64950f8cab4aa004492a49d4dafcc8fb, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 809456475, guid: 64950f8cab4aa004492a49d4dafcc8fb, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922201062, guid: 64950f8cab4aa004492a49d4dafcc8fb, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922201063, guid: 64950f8cab4aa004492a49d4dafcc8fb, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6546258584675533192, guid: 64950f8cab4aa004492a49d4dafcc8fb,
         type: 3}
       propertyPath: m_graspDB
