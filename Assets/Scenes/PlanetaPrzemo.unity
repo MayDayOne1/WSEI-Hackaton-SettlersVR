@@ -551,7 +551,7 @@ GameObject:
   - component: {fileID: 532420355}
   m_Layer: 0
   m_Name: ChopekRend
-  m_TagString: Untagged
+  m_TagString: Creature
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1251,6 +1251,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CHOPEK 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8b13a31d2c400dc4eb33ebfa43443a3d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Creature
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b13a31d2c400dc4eb33ebfa43443a3d, type: 3}

@@ -16,7 +16,7 @@ public class PushByHand : XRGrabInteractable
 
     private void OnColliderEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Creature")
+        if (collision.gameObject.tag == "Creature" || collision.gameObject.tag == "Enemy")
         {
             Rigidbody collidedRigidbody = collision.collider.GetComponent<Rigidbody>();
             if (collidedRigidbody != null)
