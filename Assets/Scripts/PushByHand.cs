@@ -15,6 +15,34 @@ public class PushByHand : XRGrabInteractable
         rb = GetComponent<Rigidbody>();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Collision!");
+        if (other.gameObject.tag == "Creature")
+        {
+            NavMeshAgent agent = other.gameObject.GetComponent<NavMeshAgent>();
+            Debug.Log("Agent: " + agent);
+            if (agent != null)
+            {
+                Debug.Log("Agent disabled!");
+                agent.enabled = false;
+            }
+            Rigidbody collidedRigidbody = other.GetComponent<Rigidbody>();
+            if (collidedRigidbody != null)
+            {
+                Vector3 pushDirection = transform.forward;
+                collidedRigidbody.AddForce(pushDirection * pushForce, ForceMode.VelocityChange);
+
+                Destroy(other.gameObject, 3f);
+            }
+        }
+
+        if (other.gameObject.tag == "Enemy")
+        {
+            Destroy(other.gameObject, .5f);
+        }
+    }
+
     private void OnColliderEnter(Collision collision)
     {
         Debug.Log("Collision!");
