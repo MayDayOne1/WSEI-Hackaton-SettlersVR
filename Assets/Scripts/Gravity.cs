@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Gravity : MonoBehaviour
 {
-    public Transform gravityTarget;
+    [SerializeField] Transform gravityTarget;
     public float gravity = 9.81f;
     Rigidbody rb;
     public bool autoOrient = false;
